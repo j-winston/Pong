@@ -39,10 +39,20 @@ while game_on:
 
     ball.move()
 
-    # Check for collision against wall
+    # Check for collision against walls
     if abs(ball.ycor() - 300) < 25:
-        ball.setheading(360 - ball.heading())
-    # Check for collision with paddle surface
+        ball.y_direction *= -1
+    if ball.ycor() + 300 < 25:
+        ball.y_direction *= -1
+
+    # If collision with left or right paddle, reverse direction of ball
+    if abs(r_paddle.xcor() - ball.xcor()) < 25:
+        ball.x_direction *= -1
+    if abs(l_paddle.xcor() - ball.xcor()) < 25:
+        ball.x_direction *= -1
+
+
+
 
 
 

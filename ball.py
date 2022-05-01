@@ -6,18 +6,18 @@ import time
 class Ball(Turtle):
     def __init__(self, speed):
         super().__init__()
-        self.shape("circle")
+        self.shape("square")
         self.color("white")
         self.goto(0, 0)
         self.penup()
         self.ball_speed = speed
-        self.setheading(45)
+        self.x_direction = 1
+        self.y_direction = 1
 
     def move(self):
-        self.forward(.02)
-        # new_x = self.xcor() + self.ball_speed
-        # new_y = self.ycor() + self.ball_speed
-        # self.goto(new_x, new_y)
+        new_x = self.xcor() + (self.ball_speed * self.x_direction)
+        new_y = self.ycor() + (self.ball_speed * self.y_direction)
+        self.goto(new_x, new_y)
 
     def bounce(self):
         print("bounce")
