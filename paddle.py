@@ -1,38 +1,28 @@
 from turtle import Turtle
 
-# Paddle movement speeds
-Y_SPEED = 20
+# Paddle movement speed
+Y_SPEED = 25
 
 
 class Paddle(Turtle):
-    def __init__(self):
+    def __init__(self, x_pos, y_pos):
         super().__init__()
-        super().hideturtle()
         self.width = 20
         self.height = 100
-        self.x_pos = 350
-        self.y_pos = 0
-        self.shape = "square"
-        self.color = "white"
-        self.speed = 20
-        self.paddle = self.create_paddle()
+        self.penup()
+        self.color('white')
+        self.shape('square')
+        self.x_pos = x_pos
+        self.y_pos = y_pos
+        self.speed = Y_SPEED
+        self.turtlesize(stretch_len=self.width/20, stretch_wid=self.height/20)
+        self.goto(self.x_pos, self.y_pos)
 
-    def create_paddle(self):
-        # Create our paddle object
-        paddle = Turtle()
-        paddle.penup()
-        paddle.color(self.color)
-        paddle.shape(self.shape)
-        # 20 pixels is default turtle size
-        paddle.turtlesize(stretch_len=self.width / 20, stretch_wid=self.height / 20)
-        # move into initial position
-        paddle.setposition(self.x_pos, self.y_pos)
-        return paddle
 
     def move_up(self):
         self.y_pos += Y_SPEED
-        self.paddle.goto(self.x_pos, self.y_pos)
+        self.goto(self.x_pos, self.y_pos)
 
     def move_down(self):
         self.y_pos -= Y_SPEED
-        self.paddle.goto(self.x_pos, self.y_pos)
+        self.goto(self.x_pos, self.y_pos)
