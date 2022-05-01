@@ -15,14 +15,15 @@ screen.tracer(0)
 screen.title(SCREEN_TITLE)
 screen.setup(SCREEN_WIDTH, SCREEN_HEIGHT)
 screen.bgcolor(SCREEN_BACKGROUND_COLOR)
-
+# Set game speed
+SPEED = .01
 
 # Draw our two paddles to the screen
 l_paddle = Paddle((-350, 200))
 r_paddle = Paddle((350, 0))
 
 # Draw our ball object and set speed
-ball = Ball(speed=.01)
+ball = Ball(speed=SPEED)
 
 # Listen for user input
 screen.listen()
@@ -46,7 +47,7 @@ while game_on:
         ball.y_direction *= -1
 
     # If collision with left or right paddle, reverse direction of ball
-    if abs(r_paddle.xcor() - ball.xcor()) < 25:
+    if abs(r_paddle.xcor() - ball.xcor()) < 25 and abs(r_paddle.ycor() - ball.ycor()) < 25:
         ball.x_direction *= -1
     if abs(l_paddle.xcor() - ball.xcor()) < 25:
         ball.x_direction *= -1
