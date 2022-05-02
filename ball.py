@@ -19,7 +19,10 @@ class Ball(Turtle):
         new_y = self.ycor() + (self.ball_speed * self.y_direction)
         self.goto(new_x, new_y)
 
-
-
-
-
+    def restart(self):
+        # Reset position and speed
+        self.setposition(0, 0)
+        self.x_direction *= -1
+        self.y_direction *= -1
+        self.ball_speed = .01
+        self.move()
